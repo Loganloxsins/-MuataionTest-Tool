@@ -11,6 +11,7 @@ const test = require('./test.js')
 // mutate命令
 program.command('mutate')
     .description('Generate the mutants.')
+    .argument('<mutator>', 'choose a mutator')
     .action(mutate);
 
 // test命令

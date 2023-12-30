@@ -4,6 +4,7 @@ import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.PackageDeclaration;
 import edu.nju.mutest.mutator.Mutator;
+import edu.nju.mutest.mutator.MutatorFactory;
 import org.apache.commons.io.FileUtils;
 import edu.nju.mutest.mutator.BinaryMutator;
 
@@ -23,20 +24,24 @@ public class DemoSrcMutationEngine {
 
     public static void main(String[] args) throws IOException {
 
-        if (args.length != 2) {
-            System.out.println("DemoSrcMutationEngine: <source_java_file> <mutant_pool_dir>");
+        if (args.length != 3 && args.length != 2) {
+            System.out.println("DemoSrcMutationEngine: <source_java_file> <mutant_pool_dir> <mutator>");
             System.exit(0);
         }
 
         // Read in original program(s).
         File srcFile = new File(args[0]);
         File outDir = new File(args[1]);
+        String opt = args.length == 3 ? args[2] : "BIN";
         System.out.println("[LOG] Source file: " + srcFile.getAbsolutePath());
         System.out.println("[LOG] Output dir: " + outDir.getAbsolutePath());
+        System.out.println("[LOG] Chosen Mutator: " + opt);
 
         // Initialize mutator(s).
         CompilationUnit cu = StaticJavaParser.parse(srcFile);
-        Mutator mutator = new BinaryMutator(cu);
+        Mutator mutator = MutatorFactory.createMutator(opt, cu);
+
+        System.out.println("[LOG] Using Mutator: " + mutator.getClass());
 
         // Locate mutation points.
         mutator.locateMutationPoints();
@@ -63,7 +68,7 @@ public class DemoSrcMutationEngine {
         // Recreate outDir if it is existed.
         if (outDir.exists()) {
             FileUtils.forceDelete(outDir);
-            System.out.println("[LOG] Delete existing outDir." );
+            System.out.println("[LOG] Delete existing outDir.");
         }
         boolean mkdirs = outDir.mkdirs();
         if (mkdirs)
@@ -86,7 +91,7 @@ public class DemoSrcMutationEngine {
 
         // Write mutant to local.
         String pattern = "mut-%d/%s";
-        for (int i = 0 ; i < mutants.size(); i++) {
+        for (int i = 0; i < mutants.size(); i++) {
             // Create directory to preserve the mutant
             File srcFileDir = new File(outDir, String.format(pattern, i + 1, packPath));
             mkdirs = srcFileDir.mkdirs();

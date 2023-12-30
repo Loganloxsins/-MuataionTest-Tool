@@ -6,7 +6,7 @@ const jar_dir = 'target/mutest-demo-1.0-SNAPSHOT-jar-with-dependencies.jar';
 function test(){
     let testsuite = 'testsuite';
     let pool = '"pool"';
-    shell.exec(`java -cp ${jar_dir} edu.nju.mutest.DemoMutantExecution ${testsuite} ${pool}`)
+    shell.exec(`java -cp ${jar_dir} edu.nju.mutest.DemoMutantExecution ${testsuite} ${pool}`);
 }
 
-module.exports = test
+module.exports = test;

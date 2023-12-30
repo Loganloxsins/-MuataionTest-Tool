@@ -20,7 +20,6 @@ cli应该具备
 需要的参数有：
 
 - `-m --mutator <mutator>`选择算子
-- `-p --pool <pool-dir>`生成变异体位置
 - `-t --testsuite <testsuite>`选择测试用例
 
 其他：
