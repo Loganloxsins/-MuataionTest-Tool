@@ -13,12 +13,9 @@ import java.util.stream.Collectors;
  */
 public class DemoMutantExecution {
 
-
-    // Use fixed test suite in this demo.
-    static String TEST_SUITE_FQN = "edu.nju.mutest.example.CalculatorTestSuite";
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        if (args.length != 2) {
+        if (args.length != 3 && args.length != 2) {
             // Require param for specifying test suite.
             System.out.println("DemoMutantExecution: <testsuite_dir> <mutant_pool_dir>");
             System.exit(0);
@@ -26,18 +23,19 @@ public class DemoMutantExecution {
 
         File tsDir = new File(args[0]);
         File mutPoolDir = new File(args[1]);
+        String testsuite = args.length == 3 ? args[2] : "edu.nju.mutest.example.CalculatorTestSuite";
         System.out.println("[LOG] Test suite dir: " + tsDir.getAbsolutePath());
         System.out.println("[LOG] Mutant pool dir: " + mutPoolDir.getAbsolutePath());
 
         // Locate all mutants
         File[] fns = mutPoolDir.listFiles();
         if (fns == null) {
-            System.out.println("[LOG] Find no mutants!" );
+            System.out.println("[LOG] Find no mutants!");
             System.exit(0);
         }
         List<File> mutDirs = Arrays.stream(fns)
-                                   .filter(f -> !f.getName().startsWith("."))
-                                   .collect(Collectors.toList());
+                .filter(f -> !f.getName().startsWith("."))
+                .collect(Collectors.toList());
         int mutNum = mutDirs.size();
         System.out.printf("[LOG] Locate %d mutants\n", mutNum);
 
@@ -48,7 +46,7 @@ public class DemoMutantExecution {
             System.out.println("[LOG] -------------------------------------------------");
             String mutName = mutDir.getName();
             System.out.println("[LOG] Execute " + mutName);
-            boolean killed = execute(tsDir, mutDir);
+            boolean killed = execute(tsDir, mutDir, testsuite);
             if (killed) {
                 killedCnt++;
                 System.out.println("[LOG] Killed " + mutName);
@@ -62,7 +60,7 @@ public class DemoMutantExecution {
                 killedCnt, mutNum, calScore(killedCnt, mutNum));
     }
 
-    private static String concateClassPath(String...paths) {
+    private static String concateClassPath(String... paths) {
         StringBuilder cpBuilder = new StringBuilder();
         // Suitable for Unix system.
         for (int i = 0; i < paths.length; i++) {
@@ -80,13 +78,13 @@ public class DemoMutantExecution {
      * @param mutDir mutant class dir, part of the classpath
      * @return whether the mutant is killed.
      */
-    private static boolean execute(File tsDir, File mutDir) throws IOException, InterruptedException {
+    private static boolean execute(File tsDir, File mutDir, String testsuite) throws IOException, InterruptedException {
 
         // Build class path.
         String cp = concateClassPath(tsDir.getAbsolutePath(), mutDir.getAbsolutePath());
 
         // Construct executor
-        ProcessBuilder pb = new ProcessBuilder("java", "-cp", cp, TEST_SUITE_FQN);
+        ProcessBuilder pb = new ProcessBuilder("java", "-cp", cp, testsuite);
         pb.redirectErrorStream(true);
         Process p = pb.start();
         BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));

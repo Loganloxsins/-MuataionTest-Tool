@@ -17,6 +17,8 @@ program.command('mutate')
 // test命令
 program.command('test')
     .description('Test the mutants.')
+    .argument('<test_class>', 'the class to test the mutants.')
+    .argument('[test_dir]', 'the dir where contains the .class file of the testsuite.', 'testsuite')
     .action(test);
 
 program.parse();
