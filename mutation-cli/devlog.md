@@ -22,3 +22,7 @@ cli应该具备
 - `-m --mutator <mutator>`选择算子
 - `-p --pool <pool-dir>`生成变异体位置
 - `-t --testsuite <testsuite>`选择测试用例
+
+其他：
+
+- Java版本错误要能报错
