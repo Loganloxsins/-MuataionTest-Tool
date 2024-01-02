@@ -16,7 +16,7 @@ public class MutatorFactory {
             case "ROR":
                 return null;
             case "UOI":
-                return null;
+                return new UOIMutator(cu);
             case "AIR":
                 return null;
             default:
