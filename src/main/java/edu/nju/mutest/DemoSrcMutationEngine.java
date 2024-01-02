@@ -3,53 +3,91 @@ package edu.nju.mutest;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.PackageDeclaration;
-import edu.nju.mutest.mutator.LCRMutator;
-import edu.nju.mutest.mutator.Mutator;
-
-import edu.nju.mutest.mutator.RORMutator;
-
-import edu.nju.mutest.mutator.MutatorFactory;
-
+import edu.nju.mutest.mutator.*;
 import org.apache.commons.io.FileUtils;
-import edu.nju.mutest.mutator.BinaryMutator;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Demo source-level mutation engine using javaparser.
- */
-public class DemoSrcMutationEngine {
-
-
-    //TODO: 选择变异算子
+public class DemoSrcMutationEngine  {
+    // choices of
+    enum Operator{
+        ABS, AOR, LCR, ROR, UOI, AIR
+    }
 
     public static void main(String[] args) throws IOException {
 
-        if (args.length != 3 && args.length != 2) {
-            System.out.println("DemoSrcMutationEngine: <source_java_file> <mutant_pool_dir> <mutator>");
+        if (args.length != 3) {
+            System.out.println("DemoSrcMutationEngine: <source_java_file> <mutant_pool_dir> <operator_type>");
+            System.out.println("Example params: src/main/java/edu/nju/mutest/example/Calculator.java pool/ abs");
             System.exit(0);
         }
 
+        HashMap<String, Operator> operator = new HashMap<String, Operator>();
+        operator.put("abs", Operator.ABS);
+        operator.put("aor", Operator.AOR);
+        operator.put("lcr", Operator.LCR);
+        operator.put("ror", Operator.ROR);
+        operator.put("uoi", Operator.UOI);
+        operator.put("air", Operator.AIR);
+
+
+        HashMap<String, String> examples = new HashMap<>();
+        examples.put("abs", "ABSExample.java");
+        examples.put("air", "AIRExample.java");
+        examples.put("aor", "AORExample.java");
+        examples.put("complex", "ComplexExample.java");
+        examples.put("lcr", "LCRExample.java");
+        examples.put("ror", "RORExample.java");
+        examples.put("uoi", "UOIExample.java");
+
         // Read in original program(s).
+        String optStr = args[2];
+
+        //String example = examples.get(optStr);
+        //File srcFile = new File("src/main/java/edu/nju/mutest/example/" + example);
+
+
         File srcFile = new File(args[0]);
         File outDir = new File(args[1]);
-        String opt = args.length == 3 ? args[2] : "BIN";
+        Operator opt = operator.get(optStr);
+
         System.out.println("[LOG] Source file: " + srcFile.getAbsolutePath());
         System.out.println("[LOG] Output dir: " + outDir.getAbsolutePath());
-        System.out.println("[LOG] Chosen Mutator: " + opt);
 
         // Initialize mutator(s).
         CompilationUnit cu = StaticJavaParser.parse(srcFile);
 
+        //  Choose Operators
+        Mutator mutator = null;
+        switch (opt){
+            case ABS:
+                mutator = new ABSMutator(cu);
+                break;
+            case AOR:
+                mutator = new AORMutator(cu);
+                break;
+            case LCR:
+                mutator = new LCRMutator(cu);
+                break;
+            case ROR:
+                mutator = new RORMutator(cu);
+                break;
+            case UOI:
+                mutator = new UOIMutator(cu);
+                break;
+            case AIR:
+                //mutator = new AIRMutator(cu);
+                break;
+            default:
+                System.out.println("This mutator is not available!");
+                System.exit(1);
+        }
 
-
-        Mutator mutator = MutatorFactory.createMutator(opt, cu);
-
-        System.out.println("[LOG] Using Mutator: " + mutator.getClass());
 
         // Locate mutation points.
         mutator.locateMutationPoints();
@@ -63,7 +101,6 @@ public class DemoSrcMutationEngine {
 
     }
 
-
     /**
      * Write mutants to disk.
      */
@@ -76,7 +113,7 @@ public class DemoSrcMutationEngine {
         // Recreate outDir if it is existed.
         if (outDir.exists()) {
             FileUtils.forceDelete(outDir);
-            System.out.println("[LOG] Delete existing outDir.");
+            System.out.println("[LOG] Delete existing outDir." );
         }
         boolean mkdirs = outDir.mkdirs();
         if (mkdirs)
@@ -99,7 +136,7 @@ public class DemoSrcMutationEngine {
 
         // Write mutant to local.
         String pattern = "mut-%d/%s";
-        for (int i = 0; i < mutants.size(); i++) {
+        for (int i = 0 ; i < mutants.size(); i++) {
             // Create directory to preserve the mutant
             File srcFileDir = new File(outDir, String.format(pattern, i + 1, packPath));
             mkdirs = srcFileDir.mkdirs();
@@ -113,6 +150,5 @@ public class DemoSrcMutationEngine {
         }
 
     }
-
 
 }
