@@ -1,0 +1,15 @@
+{
+  "name": "mutation-cli",
+  "version": "1.0.0",
+  "description": "CLI for Mutation Test Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Chan",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "shelljs": "^0.8.5"
+  }
+}
