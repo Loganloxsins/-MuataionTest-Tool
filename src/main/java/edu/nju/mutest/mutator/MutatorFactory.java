@@ -8,17 +8,17 @@ public class MutatorFactory {
             case "BIN":
                 return new BinaryMutator(cu);
             case "ABS":
-                return null;
+                return new ABSMutator(cu);
             case "AOR":
-                return null;
+                return new AORMutator(cu);
             case "LCR":
-                return null;
+                return new LCRMutator(cu);
             case "ROR":
                 return new RORMutator(cu);
             case "UOI":
                 return new UOIMutator(cu);
-            case "AIR":
-                return null;
+            case "UOR":
+                return new UORMutator(cu);
             default:
                 throw new IllegalArgumentException("This mutator is not supported.");
         }

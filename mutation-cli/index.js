@@ -10,15 +10,16 @@ const test = require('./test.js')
 
 // mutate命令
 program.command('mutate')
-    .description('Generate the mutants.')
+    .description('generate the mutants')
+    .argument('<src_dir>', "the src code for mutants")
     .argument('<mutator>', 'choose a mutator')
     .action(mutate);
 
 // test命令
 program.command('test')
-    .description('Test the mutants.')
-    .argument('<test_class>', 'the class to test the mutants.')
-    .argument('[test_dir]', 'the dir where contains the .class file of the testsuite.', 'testsuite')
+    .description('test the mutants')
+    .argument('<test_class>', 'the class to test the mutants')
+    .argument('[test_dir]', 'the dir where contains the .class file of the testsuite', 'testsuite')
     .action(test);
 
 program.parse();
