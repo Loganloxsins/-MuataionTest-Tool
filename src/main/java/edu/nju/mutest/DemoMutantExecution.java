@@ -17,7 +17,7 @@ public class DemoMutantExecution {
 
         if (args.length != 3 && args.length != 2) {
             // Require param for specifying test suite.
-            System.out.println("DemoMutantExecution: <testsuite_dir> <mutant_pool_dir>");
+            System.out.println("DemoMutantExecution: <testsuite_dir> <mutant_pool_dir> <testsuite>");
             System.exit(0);
         }
 
