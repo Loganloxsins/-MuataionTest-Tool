@@ -14,7 +14,7 @@ public class MutatorFactory {
             case "LCR":
                 return null;
             case "ROR":
-                return null;
+                return new RORMutator(cu);
             case "UOI":
                 return new UOIMutator(cu);
             case "AIR":
