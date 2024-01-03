@@ -1,171 +1,113 @@
 package edu.nju.mutest.mutator;
 
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.expr.*;
-import com.github.javaparser.ast.stmt.ExpressionStmt;
-import com.github.javaparser.ast.stmt.ReturnStmt;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
-import edu.nju.mutest.visitor.collector.ExpressionStmtCollector;
-import edu.nju.mutest.visitor.collector.MethodDeclarationCollector;
+import edu.nju.mutest.visitor.collector.NameExprCollector;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
+import static com.github.javaparser.ast.expr.UnaryExpr.Operator.*;
+
 public class UOIMutator extends AbstractMutator {
+    private List<NameExpr> mutPoints = null;  // 变异点列表，即可以发生变异的表达式的名称列表
+    private List<CompilationUnit> mutants = new NodeList<>();  // 变异后的编译单元列表
+    private HashMap<NameExpr, Integer> mutPointsMap = new HashMap<>();  // 记录每个变异点在mutPoints中出现的次数
 
-    private List<Expression> mutPoints;
-    private List<CompilationUnit> mutants;
+    private UnaryExpr.Operator[] targetOps = {  // 可变异的一元表达式操作符数组
+            LOGICAL_COMPLEMENT, PLUS, MINUS, PREFIX_INCREMENT, PREFIX_DECREMENT, POSTFIX_INCREMENT, POSTFIX_DECREMENT
+    };
 
+    private UnaryExpr.Operator blacklist[] = {
+            POSTFIX_DECREMENT, POSTFIX_INCREMENT, PREFIX_DECREMENT, PREFIX_INCREMENT
+    };
 
     public UOIMutator(CompilationUnit cu) {
         super(cu);
-        mutPoints = new ArrayList<>();
-        mutants = new ArrayList<>();
     }
 
-    private UnaryExpr.Operator[] uoiOperators = {
-            UnaryExpr.Operator.PLUS,
-            UnaryExpr.Operator.MINUS,
-            UnaryExpr.Operator.LOGICAL_COMPLEMENT,
-            UnaryExpr.Operator.BITWISE_COMPLEMENT,
-            UnaryExpr.Operator.PREFIX_INCREMENT,
-            UnaryExpr.Operator.PREFIX_DECREMENT
-    };
     @Override
     public void locateMutationPoints() {
-        List<MethodDeclaration> methodDeclarations = MethodDeclarationCollector.collect(this.origCU);
-
-        for (MethodDeclaration method : methodDeclarations) {
-            method.accept(new VoidVisitorAdapter<Void>() {
-                @Override
-                public void visit(ReturnStmt n, Void arg) {
-                    super.visit(n, arg);
-                    Expression expr = n.getExpression().orElse(null);
-                    if (expr != null) {
-                        if (expr instanceof BinaryExpr || expr instanceof NameExpr || expr instanceof MethodCallExpr || expr instanceof BooleanLiteralExpr) {
-                            mutPoints.add(expr);
-                        }
-                    }
-                }
-            }, null);
-        }
+        mutPoints = NameExprCollector.collect(this.origCU);
     }
 
 
     @Override
     public List<CompilationUnit> mutate() {
-        if (mutPoints.isEmpty())
-            throw new RuntimeException("没有找到适合变异的点！");
+        // Sanity check.
+        if (this.mutPoints == null)
+            throw new RuntimeException("You must locate mutation points first!");
+        // Modify each mutation points.
+        for (NameExpr mp : mutPoints) {
+            // This is a polluted operation. So we preserve the original
+            // Expression for recovering.
+            NameExpr origExpr = mp.clone();
 
-        for (Expression expr : mutPoints) {
-            for (UnaryExpr.Operator op : uoiOperators) {
-                if (isOperatorApplicable(expr, op)) {
-                    UnaryExpr unaryExpr = new UnaryExpr(expr.clone(), op);
-                    // 特殊处理逻辑非操作符
-                    if (op == UnaryExpr.Operator.LOGICAL_COMPLEMENT && needsParentheses(expr)) {
-                        unaryExpr = new UnaryExpr(new EnclosedExpr(expr.clone()), op);
+            // HashMap Append
+            if (mutPointsMap.containsKey(mp))
+                mutPointsMap.put(mp, mutPointsMap.get(mp) + 1);
+            else
+                mutPointsMap.put(mp, 1);
+
+            // Generate simple mutation. Each mutant contains only one
+            // mutated point.
+            for (UnaryExpr.Operator targetOp : targetOps) {
+
+
+                // Mutate
+                Expression targetExpr = new EnclosedExpr(new UnaryExpr(origExpr, targetOp));
+                System.out.println("UOIMutator: " + origExpr + " => " + targetExpr);
+                mutants.add(mutateOnce(mp, targetExpr));
+            }
+
+            // Recovering
+            mp.replace(origExpr);
+        }
+
+        return this.mutants;
+    }
+
+
+    /**
+     * Replace the operator with a given one
+     */
+    private CompilationUnit mutateOnce(Expression mp, Expression expr) {
+        CompilationUnit mutCU = this.origCU.clone();
+        // X是mp在mutPointsMap中出现的次数
+        int count = 0;
+        for (NameExpr nameExpr : mutCU.findAll(NameExpr.class)) {
+            if (nameExpr.equals(mp)) {
+                //剔除黑名单
+
+                if (nameExpr.getParentNode().isPresent()) {
+                    Node parent = nameExpr.getParentNode().get();
+                    if (parent instanceof AssignExpr) {
+                        if (((AssignExpr) parent).getTarget() == nameExpr) {
+                            continue;
+                        }
+                    } else if (parent instanceof UnaryExpr) {
+                        if (Arrays.asList(blacklist).contains(((UnaryExpr) parent).getOperator())) {
+                            continue;
+                        }
                     }
-                    mutants.add(insertUnaryExpr(unaryExpr, expr));
+                }
+                count++;
+                if (count == mutPointsMap.get(mp)) {
+                    nameExpr.replace(expr);
+                    break;
                 }
             }
         }
+        // Now the CU is a mutated one. Return it.
+        return mutCU;
+    }
+
+    public List<CompilationUnit> getMutants() {
+        if (mutants.isEmpty())
+            System.out.println("Oops, seems no mutation has been conducted yet. Call mutate() first!");
         return mutants;
     }
-
-    private boolean isBooleanExpression(Expression expr) {
-        if (expr instanceof BinaryExpr) {
-            BinaryExpr binaryExpr = (BinaryExpr) expr;
-            switch (binaryExpr.getOperator()) {
-                case EQUALS:
-                case NOT_EQUALS:
-                case LESS:
-                case LESS_EQUALS:
-                case GREATER:
-                case GREATER_EQUALS:
-                case OR:
-                case AND:
-                    return true;
-                default:
-                    return false;
-            }
-        } else if (expr instanceof UnaryExpr) {
-            UnaryExpr unaryExpr = (UnaryExpr) expr;
-            return unaryExpr.getOperator() == UnaryExpr.Operator.LOGICAL_COMPLEMENT;
-        } else if (expr instanceof MethodCallExpr || expr instanceof BooleanLiteralExpr) {
-            return true;
-        }
-        return false;
-    }
-
-
-    private boolean isOperatorApplicable(Expression expr, UnaryExpr.Operator op) {
-        // 基于表达式的类型和结构来决定是否适用操作符
-        switch (op) {
-            case PREFIX_INCREMENT:
-            case PREFIX_DECREMENT:
-                // 增加和减少运算符通常适用于变量（例如，NameExpr）
-                return expr instanceof NameExpr || expr instanceof FieldAccessExpr;
-
-            case LOGICAL_COMPLEMENT:
-                // 确保表达式是有效的布尔表达式
-                return isBooleanExpression(expr);
-
-            case PLUS:
-            case MINUS:
-            case BITWISE_COMPLEMENT:
-                // 通常适用于数字类型
-                // 可以根据表达式的类型进行更精确的检查
-                return expr instanceof LiteralExpr || expr instanceof BinaryExpr ||
-                        expr instanceof UnaryExpr || expr instanceof NameExpr ||
-                        expr instanceof MethodCallExpr || expr instanceof FieldAccessExpr;
-
-            default:
-                return false;
-        }
-    }
-
-    private boolean needsParentheses(Expression expr) {
-        // 判断是否需要括号包围表达式
-        return !(expr instanceof EnclosedExpr || expr instanceof BooleanLiteralExpr || expr instanceof NameExpr);
-    }
-
-
-    private CompilationUnit insertUnaryExpr(UnaryExpr unaryExpr, Expression originalExpr) {
-        // 克隆原始 CompilationUnit
-        CompilationUnit mutatedCU = this.origCU.clone();
-        // 使用访问者模式替换原始表达式为一元表达式
-        mutatedCU.accept(new ReplaceExpressionVisitor(originalExpr, unaryExpr), null);
-        return mutatedCU;
-    }
-
-    private static class ReplaceExpressionVisitor extends VoidVisitorAdapter<Void> {
-        private final Expression originalExpr;
-        private final UnaryExpr newExpr;
-
-        public ReplaceExpressionVisitor(Expression originalExpr, UnaryExpr newExpr) {
-            this.originalExpr = originalExpr;
-            this.newExpr = newExpr;
-        }
-
-        @Override
-        public void visit(ReturnStmt n, Void arg) {
-            super.visit(n, arg);
-            n.getExpression().ifPresent(expr -> {
-                if (expr.equals(originalExpr)) {
-                    n.setExpression(newExpr);
-                }
-            });
-        }
-
-        // 保留原有的 visit 方法，以防有其他 ExpressionStmt 类型的节点
-        @Override
-        public void visit(ExpressionStmt n, Void arg) {
-            super.visit(n, arg);
-            if (n.getExpression().equals(originalExpr)) {
-                n.setExpression(newExpr);
-            }
-        }
-    }
-
 }
