@@ -7,6 +7,10 @@ const test = require('./test.js')
 // let testsuite = '../testsuite';
 // let pool = '"../pool"';
 
+function run(src, mutator, test_class, test_dir) {
+    mutate(src, mutator);
+    test(test_class, test_dir);
+}
 
 // mutate命令
 program.command('mutate')
@@ -21,5 +25,13 @@ program.command('test')
     .argument('<test_class>', 'the class to test the mutants')
     .argument('[test_dir]', 'the dir where contains the .class file of the testsuite', 'testsuite')
     .action(test);
+
+program.command('run')
+    .description('generate mutants and test them')
+    .argument('<src_dir>', "the src code for mutants")
+    .argument('<mutator>', 'choose a mutator')
+    .argument('<test_class>', 'the class to test the mutants')
+    .argument('[test_dir]', 'the dir where contains the .class file of the testsuite', 'testsuite')
+    .action(run);
 
 program.parse();
