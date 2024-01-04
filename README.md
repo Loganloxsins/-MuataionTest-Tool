@@ -377,3 +377,12 @@ node mutation-cli test <test_class> [test_dir]
   - ROR
   - UOI
   - UOR
+
+
+
+## 加分项
+1. 额外实现的变异算子：UOR
+2. 变异选择策略：通过CLI前端进行变异算子的选择
+3. 高可读性：完备的注释
+4. 高可扩展性：新算子只需在mutator包中实现，并在工厂中注册
+5. 合理运用设计模式：工厂模式
