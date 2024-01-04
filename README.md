@@ -299,7 +299,7 @@ public class UOIExample {
 3. 运行指定命令
 
    ```bash
-   node mutation-cli run src/main/java/edu/nju/mutest/example/Calculator.java A edu.nju.mutest.example.CalculatorTestSuite testsuite
+   node mutation-cli run src/main/java/edu/nju/mutest/example/Calculator.java AOR edu.nju.mutest.example.CalculatorTestSuite testsuite
    ```
 
 ### cli命令说明
