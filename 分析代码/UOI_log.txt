@@ -1,0 +1,75 @@
+[LOG] Test suite dir: D:\南京大学\课堂文件\大三上\软工-软件测试\hw\MuataionTest-Tool\testsuite
+[LOG] Mutant pool dir: D:\南京大学\课堂文件\大三上\软工-软件测试\hw\MuataionTest-Tool\pool
+[LOG] Locate 10 mutants
+[LOG] Start to execute mutants...
+[LOG] -------------------------------------------------
+[LOG] Execute mut-1
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-1
+[LOG] -------------------------------------------------
+[LOG] Execute mut-10
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-10
+[LOG] -------------------------------------------------
+[LOG] Execute mut-2
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, 1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-2
+[LOG] -------------------------------------------------
+[LOG] Execute mut-3
+[TEST] bitWise() pass!
+[TEST] minus() pass!
+[TEST] equal() pass!
+[LOG] Survived mut-3
+[LOG] -------------------------------------------------
+[LOG] Execute mut-4
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-4
+[LOG] -------------------------------------------------
+[LOG] Execute mut-5
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-5
+[LOG] -------------------------------------------------
+[LOG] Execute mut-6
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-6
+[LOG] -------------------------------------------------
+[LOG] Execute mut-7
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-7
+[LOG] -------------------------------------------------
+[LOG] Execute mut-8
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-8
+[LOG] -------------------------------------------------
+[LOG] Execute mut-9
+Exception in thread "main" java.lang.RuntimeException: [TEST] bitWise() fail (0, -1)!
+	at edu.nju.mutest.example.UOIExampleTestSuite.assertEqual(UOIExampleTestSuite.java:42)
+	at edu.nju.mutest.example.UOIExampleTestSuite.testBitWise(UOIExampleTestSuite.java:19)
+	at edu.nju.mutest.example.UOIExampleTestSuite.main(UOIExampleTestSuite.java:9)
+[LOG] Killed mut-9
+[LOG] ======================================================
+[LOG] Stats: 9/10(#killed/#total), score=90.00

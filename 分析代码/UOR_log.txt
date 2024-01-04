@@ -1,0 +1,175 @@
+[LOG] Test suite dir: D:\南京大学\课堂文件\大三上\软工-软件测试\hw\MuataionTest-Tool\testsuite
+[LOG] Mutant pool dir: D:\南京大学\课堂文件\大三上\软工-软件测试\hw\MuataionTest-Tool\pool
+[LOG] Locate 21 mutants
+[LOG] Start to execute mutants...
+[LOG] -------------------------------------------------
+[LOG] Execute mut-1
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:23)
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:18)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+[LOG] Killed mut-1
+[LOG] -------------------------------------------------
+[LOG] Execute mut-10
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-10
+[LOG] -------------------------------------------------
+[LOG] Execute mut-11
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-11
+[LOG] -------------------------------------------------
+[LOG] Execute mut-12
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-12
+[LOG] -------------------------------------------------
+[LOG] Execute mut-13
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-13
+[LOG] -------------------------------------------------
+[LOG] Execute mut-14
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-14
+[LOG] -------------------------------------------------
+[LOG] Execute mut-15
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-15
+[LOG] -------------------------------------------------
+[LOG] Execute mut-16
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:101)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:92)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:39)
+	at edu.nju.mutest.example.SortingTestSuite.testQuicksort(SortingTestSuite.java:37)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:10)
+[LOG] Killed mut-16
+[LOG] -------------------------------------------------
+[LOG] Execute mut-17
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:101)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:92)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:39)
+	at edu.nju.mutest.example.SortingTestSuite.testQuicksort(SortingTestSuite.java:37)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:10)
+[LOG] Killed mut-17
+[LOG] -------------------------------------------------
+[LOG] Execute mut-18
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-18
+[LOG] -------------------------------------------------
+[LOG] Execute mut-19
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:98)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:92)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:39)
+	at edu.nju.mutest.example.SortingTestSuite.testQuicksort(SortingTestSuite.java:37)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:10)
+[LOG] Killed mut-19
+[LOG] -------------------------------------------------
+[LOG] Execute mut-2
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:23)
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:18)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+[LOG] Killed mut-2
+[LOG] -------------------------------------------------
+[LOG] Execute mut-20
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-20
+[LOG] -------------------------------------------------
+[LOG] Execute mut-21
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:98)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:92)
+	at edu.nju.mutest.example.Sorting.quicksort(Sorting.java:39)
+	at edu.nju.mutest.example.SortingTestSuite.testQuicksort(SortingTestSuite.java:37)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:10)
+[LOG] Killed mut-21
+[LOG] -------------------------------------------------
+[LOG] Execute mut-3
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-3
+[LOG] -------------------------------------------------
+[LOG] Execute mut-4
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:20)
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:18)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+[LOG] Killed mut-4
+[LOG] -------------------------------------------------
+[LOG] Execute mut-5
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-5
+[LOG] -------------------------------------------------
+[LOG] Execute mut-6
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:20)
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:18)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+[LOG] Killed mut-6
+[LOG] -------------------------------------------------
+[LOG] Execute mut-7
+[testInsertionSort] pass!
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 5
+	at edu.nju.mutest.example.Sorting.isSorted(Sorting.java:31)
+	at edu.nju.mutest.example.SortingTestSuite.testIsSorted(SortingTestSuite.java:29)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:9)
+[LOG] Killed mut-7
+[LOG] -------------------------------------------------
+[LOG] Execute mut-8
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-8
+[LOG] -------------------------------------------------
+[LOG] Execute mut-9
+[testInsertionSort] pass!
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 5
+	at edu.nju.mutest.example.Sorting.isSorted(Sorting.java:31)
+	at edu.nju.mutest.example.SortingTestSuite.testIsSorted(SortingTestSuite.java:29)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:9)
+[LOG] Killed mut-9
+[LOG] ======================================================
+[LOG] Stats: 10/21(#killed/#total), score=47.62

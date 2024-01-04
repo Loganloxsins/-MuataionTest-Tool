@@ -1,0 +1,207 @@
+[LOG] Test suite dir: D:\南京大学\课堂文件\大三上\软工-软件测试\hw\MuataionTest-Tool\testsuite
+[LOG] Mutant pool dir: D:\南京大学\课堂文件\大三上\软工-软件测试\hw\MuataionTest-Tool\pool
+[LOG] Locate 19 mutants
+[LOG] Start to execute mutants...
+[LOG] -------------------------------------------------
+[LOG] Execute mut-1
+[testInsertionSort] pass!
+[testIsSorted (sorted)] pass!
+[testIsSorted (unsorted)] pass!
+[testQuicksort] pass!
+[LOG] Survived mut-1
+[LOG] -------------------------------------------------
+[LOG] Execute mut-10
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-10
+[LOG] -------------------------------------------------
+[LOG] Execute mut-11
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-11
+[LOG] -------------------------------------------------
+[LOG] Execute mut-12
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-12
+[LOG] -------------------------------------------------
+[LOG] Execute mut-13
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-13
+[LOG] -------------------------------------------------
+[LOG] Execute mut-14
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-14
+[LOG] -------------------------------------------------
+[LOG] Execute mut-15
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-15
+[LOG] -------------------------------------------------
+[LOG] Execute mut-16
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-16
+[LOG] -------------------------------------------------
+[LOG] Execute mut-17
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-17
+[LOG] -------------------------------------------------
+[LOG] Execute mut-18
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-18
+[LOG] -------------------------------------------------
+[LOG] Execute mut-19
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-19
+[LOG] -------------------------------------------------
+[LOG] Execute mut-2
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -2 out of bounds for length 6
+	at edu.nju.mutest.example.Sorting.insertionSort(Sorting.java:23)
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:18)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+[LOG] Killed mut-2
+[LOG] -------------------------------------------------
+[LOG] Execute mut-3
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-3
+[LOG] -------------------------------------------------
+[LOG] Execute mut-4
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-4
+[LOG] -------------------------------------------------
+[LOG] Execute mut-5
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-5
+[LOG] -------------------------------------------------
+[LOG] Execute mut-6
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-6
+[LOG] -------------------------------------------------
+[LOG] Execute mut-7
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-7
+[LOG] -------------------------------------------------
+[LOG] Execute mut-8
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-8
+[LOG] -------------------------------------------------
+[LOG] Execute mut-9
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/nju/mutest/example/Sorting
+	at edu.nju.mutest.example.SortingTestSuite.testInsertionSort(SortingTestSuite.java:17)
+	at edu.nju.mutest.example.SortingTestSuite.main(SortingTestSuite.java:8)
+Caused by: java.lang.ClassNotFoundException: edu.nju.mutest.example.Sorting
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	... 2 more
+[LOG] Killed mut-9
+[LOG] ======================================================
+[LOG] Stats: 18/19(#killed/#total), score=94.74
