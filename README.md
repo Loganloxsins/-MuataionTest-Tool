@@ -18,6 +18,105 @@
 └── testsuite # 独立出来的测试套件类
 ```
 
+## 使用方法：
+
+在根目录下：
+
+1. 安装cli程序依赖
+
+   ```bash
+   npm install
+   ```
+
+2. 编译并打包jar包
+
+   ```bash
+   mvn clean package
+   ```
+
+3. 运行指定命令
+
+   ```bash
+   node mutation-cli run src/main/java/edu/nju/mutest/example/Caculator.java UOI edu.nju.mutest.example.CaculatorTestSuite testsuite
+   ```
+
+### cli命令说明
+
+```bash
+node mutation-cli -h
+```
+
+- 获取命令说明
+
+```bash
+node mutation-cli run <src_file> <mutator> <test_class> [test_dir]
+```
+
+- 使用变异算子`<mutator>`给`<src_file>`产生变异体，并使用`[test_dir]`下的测试类`<test_class>`来测试这些变异体。变异体生成在`pool`目录下。
+
+- 参数表
+
+  | 参数            | 是否必须 | 说明                                         |
+  | --------------- | -------- | -------------------------------------------- |
+  | <src_file>      | 是       | 源文件                                       |
+  | &lt;mutator&gt; | 是       | 变异算子                                     |
+  | <test_class>    | 是       | 测试类                                       |
+  | [test_dir]      | 否       | 测试类的位置 若不指定，则使用默认值testsuite |
+
+- 变异算子列表
+
+  - ABS
+  - AOR
+  - LCR
+  - ROR
+  - UOI
+  - UOR
+
+```bash
+node mutation-cli mutate <src_file> <mutator> 
+```
+
+- 使用变异算子`<mutator>`给`<src_file>`产生变异体。变异体生成在`pool`目录下。
+
+- 参数表
+
+  | 参数            | 是否必须 | 说明     |
+  | --------------- | -------- | -------- |
+  | <src_file>      | 是       | 源文件   |
+  | &lt;mutator&gt; | 是       | 变异算子 |
+
+- 变异算子列表
+
+  - ABS
+  - AOR
+  - LCR
+  - ROR
+  - UOI
+  - UOR
+
+```bash
+node mutation-cli test <test_class> [test_dir]
+```
+
+- 使用`[test_dir]`下的测试类`<test_class>`来测试`pool`目录下的变异体。
+
+- 参数表
+
+  | 参数         | 是否必须 | 说明                                         |
+  | ------------ | -------- | -------------------------------------------- |
+  | <test_class> | 是       | 测试类                                       |
+  | [test_dir]   | 否       | 测试类的位置 若不指定，则使用默认值testsuite |
+
+- 变异算子列表
+
+  - ABS
+  - AOR
+  - LCR
+  - ROR
+  - UOI
+  - UOR
+
+
 ## 变异算子设计思路
 
 ### 突变算子ABS
@@ -280,100 +379,4 @@ public class UOIExample {
 }
 ```
 
-## 使用方法：
 
-在根目录下：
-
-1. 安装cli程序依赖
-
-   ```bash
-   npm install
-   ```
-
-2. 编译并打包jar包
-
-   ```bash
-   mvn clean package
-   ```
-
-3. 运行指定命令
-
-   ```bash
-   node mutation-cli run src/main/java/edu/nju/mutest/example/Caculator.java UOI edu.nju.mutest.example.CaculatorTestSuite testsuite
-   ```
-
-### cli命令说明
-
-```bash
-node mutation-cli -h
-```
-
-- 获取命令说明
-
-```bash
-node mutation-cli run <src_file> <mutator> <test_class> [test_dir]
-```
-
-- 使用变异算子`<mutator>`给`<src_file>`产生变异体，并使用`[test_dir]`下的测试类`<test_class>`来测试这些变异体。变异体生成在`pool`目录下。
-
-- 参数表
-
-  | 参数            | 是否必须 | 说明                                         |
-  | --------------- | -------- | -------------------------------------------- |
-  | <src_file>      | 是       | 源文件                                       |
-  | &lt;mutator&gt; | 是       | 变异算子                                     |
-  | <test_class>    | 是       | 测试类                                       |
-  | [test_dir]      | 否       | 测试类的位置 若不指定，则使用默认值testsuite |
-
-- 变异算子列表
-
-  - ABS
-  - AOR
-  - LCR
-  - ROR
-  - UOI
-  - UOR
-
-```bash
-node mutation-cli mutate <src_file> <mutator> 
-```
-
-- 使用变异算子`<mutator>`给`<src_file>`产生变异体。变异体生成在`pool`目录下。
-
-- 参数表
-
-  | 参数            | 是否必须 | 说明     |
-  | --------------- | -------- | -------- |
-  | <src_file>      | 是       | 源文件   |
-  | &lt;mutator&gt; | 是       | 变异算子 |
-
-- 变异算子列表
-
-  - ABS
-  - AOR
-  - LCR
-  - ROR
-  - UOI
-  - UOR
-
-```bash
-node mutation-cli test <test_class> [test_dir]
-```
-
-- 使用`[test_dir]`下的测试类`<test_class>`来测试`pool`目录下的变异体。
-
-- 参数表
-
-  | 参数         | 是否必须 | 说明                                         |
-  | ------------ | -------- | -------------------------------------------- |
-  | <test_class> | 是       | 测试类                                       |
-  | [test_dir]   | 否       | 测试类的位置 若不指定，则使用默认值testsuite |
-
-- 变异算子列表
-
-  - ABS
-  - AOR
-  - LCR
-  - ROR
-  - UOI
-  - UOR
