@@ -322,7 +322,7 @@ node mutation-cli run <src_file> <mutator> <test_class> [test_dir]
   | --------------- | -------- | -------------------------------------------- |
   | <src_file>      | 是       | 源文件                                       |
   | &lt;mutator&gt; | 是       | 变异算子                                     |
-  | <test_class>    | 是       | 测试类                                       |
+  | <test_class>    | 是       | 测试类 必须是编译后的.class文件              |
   | [test_dir]      | 否       | 测试类的位置 若不指定，则使用默认值testsuite |
 
 - 变异算子列表
@@ -366,7 +366,7 @@ node mutation-cli test <test_class> [test_dir]
 
   | 参数         | 是否必须 | 说明                                         |
   | ------------ | -------- | -------------------------------------------- |
-  | <test_class> | 是       | 测试类                                       |
+  | <test_class> | 是       | 测试类 必须是编译后的.class文件              |
   | [test_dir]   | 否       | 测试类的位置 若不指定，则使用默认值testsuite |
 
 - 变异算子列表
